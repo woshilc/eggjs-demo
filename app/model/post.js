@@ -17,14 +17,14 @@ module.exports = app => {
   });
 
   Post.associate = function() {
-    app.model.Post.belongsTo(app.model.User, { as: 'user', foreignKey: 'user_id' });
+    app.model.Post.belongsTo(app.model.User, {  foreignKey: 'user_id' });
   };
 
-  Post.findByIdWithUser = async function(id, userId) {
-    return await this.findOne({
-      where: { id, user_id: userId },
-    });
-  };
+  // Post.findByIdWithUser = async function(id, userId) {
+  //   return await this.findOne({
+  //     where: { id, user_id: userId },
+  //   });
+  // };
 
   return Post;
 };

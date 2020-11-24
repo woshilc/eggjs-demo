@@ -37,6 +37,23 @@ class UserController extends Controller {
     await ctx.service.user.del(id);
     ctx.status = 200;
   }
+
+  async listUserAndProject(){
+    const ctx = this.ctx;
+    const query = {
+      limit: 10,
+      offset: 0,
+    };
+    ctx.body = await ctx.service.user.listUserAndProject(query);
+  }
+
+  async addProject(){
+    console.log(this.ctx.request.body);
+    const ctx = this.ctx;
+    const id = ctx.helper.parseInt(ctx.params.id);
+    const projectIds = ctx.request.body.projectIds;
+    ctx.body = await ctx.service.user.addProject({id,projectIds})
+  }
 }
 
 module.exports = UserController;

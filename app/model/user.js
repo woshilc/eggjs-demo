@@ -15,9 +15,16 @@ module.exports = app => {
     updated_at: DATE,
   });
 
-//   User.prototype.associate = function() {
-//     app.model.User.hasMany(app.model.Post, { as: 'posts' });
-//   };
+  User.associate = function() {
+    //调用方法的是source model，方法内被引用的是target model，此处User为source model，post含有关联字段
+    app.model.User.hasMany(app.model.Post,{foreignKey:'user_id'});
+
+    //多对多关联，through对应的是中间表
+    app.model.User.belongsToMany(app.model.Project,{
+      through: 'user_projects',//sequelize6以上指定表名，6以下指定model
+      foreignKey: 'user_id'
+    });
+  };
 
   return User;
 };

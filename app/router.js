@@ -13,4 +13,6 @@ module.exports = app => {
   router.resources('posts','/posts',controller.post);
 
   router.resources('projects','/projects',controller.project);
+
+  router.get('/files/getFile/:fileName',controller.file.getFileByName);
 };

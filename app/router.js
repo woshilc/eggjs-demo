@@ -15,4 +15,7 @@ module.exports = app => {
   router.resources('projects','/projects',controller.project);
 
   router.get('/files/getFile/:fileName',controller.file.getFileByName);
+
+  router.post('/compress/compressfile',controller.compress.compressFile);
+  router.post('/compress/uncompressfile',controller.compress.uncompressFile);
 };

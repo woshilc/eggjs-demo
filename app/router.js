@@ -18,4 +18,8 @@ module.exports = app => {
 
   router.post('/compress/compressfile',controller.compress.compressFile);
   router.post('/compress/uncompressfile',controller.compress.uncompressFile);
+
+  router.post('/imageprocess/addText1',controller.imageprocess.addText1);
+  router.post('/imageprocess/addText2',controller.imageprocess.addText2);
+  router.post('/imageprocess/compressImg',controller.imageprocess.compressImg);
 };
